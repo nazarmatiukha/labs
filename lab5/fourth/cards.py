@@ -33,11 +33,18 @@ class CardsDeck:
 
     def six_card(self):
         return [self.one_card() for _ in range(6)]
+    
+    def search(self, search):
+        self.search = search
+        for i in cardsdeck:
+            if search in i:
+                print (' '.join(i))
 
 
 rank = ['Туз', 'Король', 'Дама', 'Валет', '10', '9', '8', '7', '6', ]
 suit = ["червей", "бубей", "крестей", "пик"]
 cards = [Cards(s, r) for s in suit for r in rank]
+cardsdeck = [[r, s] for s in suit for r in rank]
 
 deck = CardsDeck(cards)
 print('Колода:')
@@ -53,4 +60,4 @@ print()
 print('Выдача 6 карт:')
 for card in deck.six_card():
     print(card)
-deck.get(int(input('Введите карту для поиска')))
+deck.search(input('Введите карту для поиска'))
